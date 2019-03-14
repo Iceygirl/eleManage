@@ -1,3 +1,4 @@
+// 主页的左侧菜单
 export const menuData = [{
     name:'Main',
     title:'首页',
@@ -7,12 +8,12 @@ export const menuData = [{
     name:'dataManege',
     title:'数据管理',
     icon:'iconicon--',
-    children:[{
-        name:'userList', 
+    children:[{ 
+        name:'UserList', 
         path:'/userList', 
         title:'用户列表'
     },{
-        name:'shopList',
+        name:'ShopList',
         path:'/shopList',
         title:'商家列表'
     }]
@@ -21,7 +22,7 @@ export const menuData = [{
     title:'添加数据', 
     icon:'iconjiahao',
     children:[{
-        name:'addShop',
+        name:'AddShop',
         path:'/addShop',
         title:'添加商铺'
     },{
@@ -34,7 +35,7 @@ export const menuData = [{
     title:'图表',
     icon:'iconxingxing',
     children:[{
-        name:'user',
+        name:'User',
         path:'/user',
         title:'用户分布'
     }]
@@ -43,7 +44,7 @@ export const menuData = [{
     title:'编辑',
     icon:'iconbi',
     children:[{
-        name:'edit',
+        name:'Edit',
         path:'/edit',
         title:'文本编辑'
     }]
@@ -52,7 +53,7 @@ export const menuData = [{
     title:'设置',
     icon:'iconshezhi',
     children:[{
-        name:'adminSet',
+        name:'AdminSet',
         path:'/adminSet',
         title:'管理员设置'
     }]
@@ -61,8 +62,17 @@ export const menuData = [{
     title:'说明',
     icon:'icontongyong-shuomingtishitubiao',
     children:[{
-        name:'explain',
+        name:'Explain',
         path:'/explain',
         title:'说明'
     }]
-},]
+}]
+
+
+export const dropDownList = [{
+    name:'index',
+    title:'首页'
+},{
+    name:'logout',
+    title:'注销'
+}]
