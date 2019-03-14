@@ -85,7 +85,7 @@
  html, body {
    width: 100%;
    height: 100%;
-   font-size:28px;
+   font-size:16px;
    background: #fff;
  }
  
@@ -107,6 +107,14 @@
    white-space: nowrap;
  }
 
+ .pull-left {
+   float: left;
+ }
+
+ .pull-right {
+   float: right;
+ }
+ 
  // 清除浮动
 .clearfix:after{ 
   display:block;
@@ -119,89 +127,8 @@
   zoom:1
 }
 
-.headerIcon {
-  position: absolute;
-  left:20px;
-  font-size:16px;
-}
 
-.submitBtn {
-  display:block;
-  margin:0 auto;
-  width:94%;
-  height:46px;
-  line-height: 46px;
-  text-align: center;
-  border-radius: 6px;
-  background: #00A1FF;
-  color:#fff;
-  border:none;
-  font-size:16px;
-}
-
-.mint-button--large {
-  width:90% !important;
-  margin:20px auto 0;
-}
-
-.mint-popup  {
-  width:100% !important;
-}
-
-.picker-toolbar {
-  .pickerTop{
-    display: flex;
-    height:100%;
-    .pickerBtn {
-      height:100%;
-      line-height: 40px;
-      flex:1;
-      color: #26a2ff;
-      text-align: center;
-      font-size:18px;
-    }
-  }
-}
-
-.defaultText {
-  // color:#00A1FF;
-}
-
-.downIcon {
-  font-size:11px;
-  // color:#00A1FF;
-  margin-left:10px;
-  &.black {
-    color:#000;
-  }
-}
-
-.rules {
-  font-size:13px;
-  color:#FF4C4C;
-  text-indent: 100px;
-  padding-top:10px;
-}
-
-.noData {
-  padding-top:50px;
-  font-size:16px;
-  text-align: center;
-}
-
-.icon-ic_check {
-  font-size:60px
-}
-
-.fixedBtn {
-  position:fixed;
-  bottom:0;
-  left:0;
-  z-index:1;
-  width:100%;
-  height:50px;
-  border-radius: 0;
-  font-size:18px;
-  color:#fff;
-  background: linear-gradient(to bottom, #009EFF, #007AFA);
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+  background-color:#2d8cf0!important;
+  color:#fff!important;
 }

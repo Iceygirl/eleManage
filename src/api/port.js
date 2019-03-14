@@ -11,6 +11,14 @@ export function login(data) {
 }  
 
 
+// 退出登录
+export function logout() {
+
+  let url = '/admin/signout'
+
+  return ajax(url) 
+}  
+
 
 
 

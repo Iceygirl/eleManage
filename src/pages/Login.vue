@@ -49,7 +49,7 @@ export default {
                                 this.$Notice.success({
                                     title:res.success
                                 })
-                                this.$router.push('/home')
+                                this.$router.push('/main')
                             } else {
                                 this.$Notice.error({
                                     title:res.message

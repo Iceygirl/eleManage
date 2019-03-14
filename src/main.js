@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 
 import iView from 'iview'
 
-import 'style/base.scss'
+import 'font/iconfont.css'
 import 'iview/dist/styles/iview.css'
+import 'style/base.scss'
 
 Vue.use(iView)
  
@@ -17,6 +19,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
