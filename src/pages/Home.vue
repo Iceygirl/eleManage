@@ -1,13 +1,25 @@
 <template>
-    <div class="Home">
-        首页
+    <div class="Home clearfix">
+        <div class="sidenav pull-left">
+            <SideNav></SideNav>
+        </div>
+        <div class="pull-left">
+            <Head></Head> 
+            <router-view></router-view>
+        </div>
     </div> 
-</template> 
- 
+</template>  
+  
 <script>
 
+import SideNav from 'components/SideNav'
+import Head from 'components/Head' 
 
 export default {
+    components: {
+        SideNav,
+        Head
+    },
     data() {
         return {
         }
@@ -18,4 +30,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Home {
+    height:100%;
+    .sidenav {
+        height:100%;
+        background-color:#515a6e;
+    }
+}
 </style>

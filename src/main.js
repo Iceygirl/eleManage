@@ -6,8 +6,9 @@ import router from './router'
 
 import iView from 'iview'
 
-import 'style/base.scss'
+import 'font/iconfont.css'
 import 'iview/dist/styles/iview.css'
+import 'style/base.scss'
 
 Vue.use(iView)
  

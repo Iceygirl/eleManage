@@ -1,0 +1,68 @@
+export const menuData = [{
+    name:'Main',
+    title:'首页',
+    icon:'iconshouye',
+    path:'/main'
+},{
+    name:'dataManege',
+    title:'数据管理',
+    icon:'iconicon--',
+    children:[{
+        name:'userList', 
+        path:'/userList', 
+        title:'用户列表'
+    },{
+        name:'shopList',
+        path:'/shopList',
+        title:'商家列表'
+    }]
+},{
+    name:'addData',
+    title:'添加数据', 
+    icon:'iconjiahao',
+    children:[{
+        name:'addShop',
+        path:'/addShop',
+        title:'添加商铺'
+    },{
+        name:'AddGoods',
+        path:'/AddGoods',
+        title:'添加商品'
+    }]
+},{
+    name:'chart', 
+    title:'图表',
+    icon:'iconxingxing',
+    children:[{
+        name:'user',
+        path:'/user',
+        title:'用户分布'
+    }]
+},{
+    name:'edit',
+    title:'编辑',
+    icon:'iconbi',
+    children:[{
+        name:'edit',
+        path:'/edit',
+        title:'文本编辑'
+    }]
+},{
+    name:'setting',
+    title:'设置',
+    icon:'iconshezhi',
+    children:[{
+        name:'adminSet',
+        path:'/adminSet',
+        title:'管理员设置'
+    }]
+},{
+    name:'explain',
+    title:'说明',
+    icon:'icontongyong-shuomingtishitubiao',
+    children:[{
+        name:'explain',
+        path:'/explain',
+        title:'说明'
+    }]
+},]
