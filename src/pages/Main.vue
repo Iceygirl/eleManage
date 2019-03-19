@@ -15,10 +15,10 @@
                 <span class="data"><big>232424</big>管理员</span>
             </p>
         </div>
-        <!-- 折线图 -->
+        <!-- 折线图 --> 
         <div class="echarts" ref="charts"></div>
     </div> 
-</template> 
+</template>  
  
 <script>
 

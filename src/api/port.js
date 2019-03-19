@@ -1,13 +1,13 @@
 // 后台接口
 
-import { ajax } from 'api/axios'
+import { ajaxPost, ajaxGet } from 'api/axios'
 
 //  登录
 export function login(data) {
 
   let url = '/admin/login'
 
-  return ajax(url,data) 
+  return ajaxPost(url,data) 
 }  
 
 
@@ -16,8 +16,18 @@ export function logout() {
 
   let url = '/admin/signout'
 
-  return ajax(url) 
+  return ajaxPost(url) 
 }  
+
+ 
+// 获取用户列表
+export function getUser() {
+
+  let url = '/v1/users/list'
+
+  return ajaxGet(url) 
+}  
+
 
 
 
