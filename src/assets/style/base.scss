@@ -101,7 +101,7 @@
 }
 
  /*显示省略号*/
- .ellipsis{
+ .ellipsis{ 
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
@@ -134,6 +134,59 @@
 }
 
 
+.wrap {
+  width:100%;
+  padding:30px;
+}
+
 // 表格样式
-.table {
+.ivu-table table {
+  font-size:14px;
+}
+
+
+// 弹框样式
+.modal {
+  font-size:14px;
+  .ivu-modal-header p, .ivu-modal-header-inner {
+    font-size:16px;
+  }
+  .ivu-input {
+    font-size:14px;
+  }
+  .ivu-auto-complete.ivu-select.ivu-select-single.ivu-select-default {
+    width:80%;
+  }
+  .ivu-auto-complete.ivu-select.ivu-select-single.ivu-select-default .ivu-input-wrapper{
+    width:100%;
+  }
+  .ivu-cascader {
+    display: inline-block;
+    .ivu-input-wrapper {
+      width:100%;
+    }
+    .ivu-cascader .ivu-cascader-menu-item {
+      font-size:14px!important;
+    }
+  }
+  .ivu-input-wrapper {
+    width:80%;
+  }
+  .form {
+    padding-left:20px;
+  }
+  .label {
+    font-size:14px;
+    width:80px;
+    display: inline-block;
+  }
+  .cityName {
+    text-indent:90px;
+    font-size:14px;
+  }
+}
+
+.page {
+  margin:20px 0;
+  float: right;
 }

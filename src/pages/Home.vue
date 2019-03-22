@@ -38,6 +38,8 @@ export default {
     }
     .main {
         width:calc(100% - 240px);
+        height:100%;
+        overflow: auto;
     }
 }
 </style>

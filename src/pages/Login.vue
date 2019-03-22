@@ -52,7 +52,7 @@ export default {
                                 this.$router.push('/main')
                             } else {
                                 this.$Notice.error({
-                                    title:res.message
+                                    title:'登录失败'
                                 })
                             }
                         })

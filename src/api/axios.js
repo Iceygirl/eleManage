@@ -3,32 +3,36 @@
 import axios from 'axios'
 import { httpURL} from './config.js'
 
-export function ajaxPost(url, data) {
+export function axiosGet(url, data) {
   url = `${httpURL}${url}`
-  return axios({
-      method: 'post',
-      url: url,
-      data
+  return axios.get(url,{
+      params: {
+        ...data
+      }
     })
     .then((res) => {
       return Promise.resolve(res.data) 
     }) 
     .catch((error) => {
-      console.log(error)
+      this.$Notice.info({
+          title:error.message
+      })
     })
 }
 
-export function ajaxGet(url, data) {
+export function axiosPost(url, data) {
   url = `${httpURL}${url}`
   return axios({
-      method: 'get',
-      url: url,
+      method:'post',
+      url,
       data
     })
     .then((res) => {
       return Promise.resolve(res.data) 
     }) 
     .catch((error) => {
-      console.log(error)
+      this.$Notice.info({
+          title:error.message
+      })
     })
 }

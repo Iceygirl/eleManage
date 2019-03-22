@@ -23,3 +23,33 @@ export const loginRules = {
         message:'请输入密码'
     }]
 }
+
+// 添加编辑商铺字段验证
+export const shopRules = {
+    name:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入商铺名称'
+    }],
+    address:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入商铺地址'
+    }],
+    description:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入商铺介绍'
+    }],
+    phone:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入联系电话'
+    }],
+    category:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入店铺分类'
+    }]
+}
+
