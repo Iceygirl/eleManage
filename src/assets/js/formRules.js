@@ -15,7 +15,7 @@ export const loginRules = {
         message:'请输入用户名'
     },{
         validator:loginLengthValid,
-        trigger:'blur'
+        trigger:'blur' 
     }],
     password:[{
         required:true,
@@ -24,7 +24,7 @@ export const loginRules = {
     }]
 }
 
-// 添加编辑商铺字段验证
+// 编辑商铺字段验证
 export const shopRules = {
     name:[{
         required:true,
@@ -34,7 +34,7 @@ export const shopRules = {
     address:[{
         required:true,
         trigger:'blur',
-        message:'请输入商铺地址'
+        message:'请输入详细地址'
     }],
     description:[{
         required:true,
@@ -49,7 +49,29 @@ export const shopRules = {
     category:[{
         required:true,
         trigger:'blur',
-        message:'请输入店铺分类'
+        message:'请选择店铺分类'
+    }],
+    imagePath:[{
+        required:true,
+        message:'请上传商铺图片'
     }]
-}
+} 
 
+// 添加商铺字段验证
+export const addShopRules = {
+    name:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入商铺名称'
+    }],
+    address:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入详细地址'
+    }],
+    phone:[{
+        required:true,
+        trigger:'blur',
+        message:'请输入联系电话'
+    }]
+} 

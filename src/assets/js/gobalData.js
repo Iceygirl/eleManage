@@ -5,7 +5,7 @@ export const menuData = [{
     icon:'iconshouye',
     path:'/main'
 },{
-    name:'dataManege',
+    name:'DataManege',
     title:'数据管理',
     icon:'iconicon--',
     children:[{ 
@@ -18,7 +18,7 @@ export const menuData = [{
         title:'商家列表'
     }]
 },{
-    name:'addData',
+    name:'AddData',
     title:'添加数据', 
     icon:'iconjiahao',
     children:[{
@@ -31,7 +31,7 @@ export const menuData = [{
         title:'添加商品'
     }]
 },{
-    name:'chart', 
+    name:'Chart', 
     title:'图表',
     icon:'iconxingxing',
     children:[{
@@ -40,7 +40,7 @@ export const menuData = [{
         title:'用户分布'
     }]
 },{
-    name:'edit',
+    name:'Edit',
     title:'编辑',
     icon:'iconbi',
     children:[{
@@ -49,7 +49,7 @@ export const menuData = [{
         title:'文本编辑'
     }]
 },{
-    name:'setting',
+    name:'Setting',
     title:'设置',
     icon:'iconshezhi',
     children:[{
@@ -58,7 +58,7 @@ export const menuData = [{
         title:'管理员设置'
     }]
 },{
-    name:'explain',
+    name:'Explain',
     title:'说明',
     icon:'icontongyong-shuomingtishitubiao',
     children:[{
@@ -75,4 +75,19 @@ export const dropDownList = [{
 },{
     name:'logout',
     title:'注销'
+}]
+
+
+export const activityList =[{
+    label:'满减优惠',
+    icon_name:'减'
+},{
+    label:'优惠大酬宾',
+    icon_name:'优'
+},{
+    label:'新用户立减',
+    icon_name:'新'
+},{
+    label:'进店领券',
+    icon_name:'领'
 }]

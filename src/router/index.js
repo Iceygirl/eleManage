@@ -53,7 +53,7 @@ const router =  new Router({
         component: AddShop,
         meta:['添加数据','添加商铺']
       },{
-        path: '/AddGoods',
+        path: '/addGoods',
         name: 'AddGoods',
         component: AddGoods,
         meta:['添加数据','添加商品']
@@ -79,7 +79,7 @@ const router =  new Router({
         meta:['说明','说明']
       },
     ]
-    }
+    } 
   ]
 })
  

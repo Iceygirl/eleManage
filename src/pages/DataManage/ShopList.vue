@@ -4,7 +4,7 @@
         <Page class="page" :current="current" :page-size="20" :total="total" @on-change="pageChange" show-total />
         <Modal
             class="modal"
-            v-model="showModal"
+            v-model="showModal" 
             :title="modalTitle"
             :name="modalName">
                 <div v-if="modalName === 'editShop'">
@@ -50,36 +50,40 @@
                                 :action="httpURL + '/v1/addimg/shop'" 
                                 style="display: inline-block;width:100px;"
                                 class="upload">
-                                <img :src="httpURL + '/img/' + form.imagePath"  v-if="form.imagePath">
+                                <img :src="httpURL + '/img/' + form.image_path"  v-if="form.image_path">
                                 <div class="upload-list-cover">
                                     <!-- <Icon type="ios-eye-outline" @click.native="handleView"></Icon> -->
                                     <Icon type="ios-camera" size="20"></Icon> 
                                 </div>
                             </Upload>
-                            <Modal v-model="isLargeImg" title="放大图片"  @on-ok="close" >
+                            <Modal v-model="isLargeImg" title="放大图片"  @on-ok="close">
                                 <div>
-                                    <img :src="httpURL + '/img/' + form.imagePath" alt="" width="488" height="405">
+                                    <img :src="httpURL + '/img/' + form.image_path" alt="" width="488" height="405">
                                 </div>
                             </Modal>
                         </FormItem>
                     </Form>
                 </div>
-
-                
+ 
+                <div v-if="modalName === 'removeShop'">
+                    <p>你确定要删除{{shopName}}吗？</p>
+                </div>
                 <div slot="footer">
                     <Button @click="cancel">取消</Button>
                     <Button type="primary" @click="_editShop" v-if="modalName === 'editShop'">确定</Button>
+                    <Button type="primary" @click="_removeShop" v-if="modalName === 'removeShop'">确定</Button>
                 </div>
         </Modal>
 
     </div> 
 </template> 
- 
-<script> 
+  
+<script>  
 
 import axios from 'axios'
 import { shopThead } from 'js/formTheads'
-import { getCityInfo, getShop, getShopCount, getShopCategory, getPosition, editShop } from 'api/port'
+import { shopRules } from 'js/formRules'
+import { getCityInfo, getShop, getShopCount, getShopCategory, getPosition, editShop, removeShop } from 'api/port'
 import ShopExtendRow from 'components/ShopExtendRow'
 import { ERR_OK,httpURL } from 'api/config' 
 import { cloneObj, backToLogin } from 'js/util' 
@@ -102,18 +106,20 @@ export default {
                 description:'',
                 phone:'',
                 category:'',
-                imagePath:'',
+                image_path:'',
                 id:0,
                 rating:0,
                 recent_order_num:0
             },
             cityName:'',
             cityId:0,
-            shopRules:{},
+            shopRules:shopRules,
             category:[],
             shopCategory:[],
             httpURL:httpURL,
             addressList:[],
+            shopName:'',
+            shopId:0,
             theads:[
                 {
                     type: 'expand',
@@ -157,7 +163,7 @@ export default {
                             },
                             on: {
                                 click: () => {
-                                    this.addGoods(params.index)
+                                    this.addGoods(params.row)
                                 }
                             }
                         }, '添加食品'),
@@ -171,7 +177,7 @@ export default {
                             },
                             on: {
                                 click: () => {
-                                    this.remove(params.index)
+                                    this.remove(params.row)
                                 }
                             }
                         }, '删除')
@@ -225,7 +231,7 @@ export default {
                 limit: 20,
                 ...this.cityInfo
             }
-            getShop(data)
+            getShop(data, 'get')
                 .then(res=>{
                     let arr = []
                     let list = res
@@ -239,7 +245,7 @@ export default {
                             rating:item.rating,
                             recentOrderNum:item.recent_order_num,
                             category:item.category,
-                            imagePath:item.image_path
+                            image_path:item.image_path
                         })
                     })
 
@@ -294,6 +300,7 @@ export default {
             })
            
         },
+        // 确定商铺分类
         confirmCategory(value) {
             this.form.category = value.join('/')
         },
@@ -341,8 +348,8 @@ export default {
                 address: item.address,
                 description: item.description,
                 phone: item.phone,
-                category: '',
-                imagePath: item.imagePath,
+                category: item.category,
+                image_path: item.image_path,
                 id: item.id,
                 rating: item.rating,
                 recent_order_num: item.recentOrderNum
@@ -352,36 +359,67 @@ export default {
                 this.category.push(citem)
             })
         },
-        _editShop() {
-            let data = cloneObj(this.form)
-            editShop(data) 
-                .then(res=>{
-                    if(res.status === ERR_OK) {
-                        this.showModal = false
-                        this.$Notice.success({
-                            title:'修改成功'
-                        })
-                        this._getShop()
-                    } else {
-                        this.$Notice.error({
-                            title:res.message
-                        })
-                        backToLogin(res.type)
-                    }
-                })
+        // 编辑商铺
+        _editShop() { 
+            this.$refs.form.validate((valid)=>{
+                if(valid) {
+                    let data = cloneObj(this.form)
+                    editShop(data) 
+                        .then(res=>{
+                            if(res.status === ERR_OK) {
+                                this.showModal = false
+                                this.$Notice.success({
+                                    title:'修改成功'
+                                })
+                                this._getShop()
+                            } else {
+                                this.$Notice.error({
+                                    title:res.message
+                                })
+                                // backToLogin(res.type)
+                            }
+                        }) 
+                }
+            })
         },
         cancel() {
             this.showModal = false
         },
         // 添加食品
-        addGoods() {
-
+        addGoods(item) {
+            this.$router.push({
+                path:'/addGoods',
+                query:{
+                    id:item.id
+                }
+            }) 
         },
         // 删除
-        remove() {
-
-        },
-        
+        remove(item) {
+            this.showModal = true
+            this.modalName = 'removeShop'
+            this.modalTitle = '删除店铺'
+            console.log(item)
+            this.shopName = item.name
+            this.shopId = item.id
+        }, 
+        _removeShop() {
+            removeShop(this.shopId)
+                .then(res=>{
+                    if(res.status === ERR_OK) {
+                        this.$Notice.success({
+                            title:'删除成功'
+                        })
+                        this._getShop()
+                    } else {
+                        this.$Notice.warning({
+                            title:res.message
+                        })
+                        // backToLogin(res.type)
+                    }
+                })
+                
+        },        
         // 放大图片
         handleView (url) {
             this.isLargeImg = true
@@ -392,7 +430,7 @@ export default {
         // 上传成功
         handleSuccess (res, file) {
             if(res.status === ERR_OK) {
-                this.form.imagePath = res.image_path
+                this.form.image_path = res.image_path
             } else {
                 this.$Notice.error({
                     title:'图片上传失败'
@@ -425,46 +463,5 @@ export default {
     box-shadow: inset 0 2px 0 #f4f4f4;
   }
 }
-.upload{
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
-    margin-right: 4px;
-    top:30px;
-}
-.upload img{
-    width: 100%;
-    height: 100%;
-}
-.ivu-upload-drag {
-    width:100%;
-    height:100%;
-}
 
-.upload-list-cover{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,.6);
-}
-.ivu-upload-drag:hover .upload-list-cover{
-    display: block;
-}
-.upload-list-cover i{
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 2px;
-}
 </style>
