@@ -14,8 +14,8 @@
                 </template> 
                 <MenuItem v-for="(subItem,subIndex) in item.children" :key="subIndex" :name="subItem.name"  :to="subItem.path">{{subItem.title}}</MenuItem>
             </Submenu>
-
-
+ 
+ 
         </Menu>  
     </div> 
 </template> 

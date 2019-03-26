@@ -61,7 +61,7 @@ export default {
                         this.$router.replace('/')
                     } else {
                         this.$Notice.error({
-                            title:res.message
+                            title:'退出失败'
                         })
                     }
                 })
